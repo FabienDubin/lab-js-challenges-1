@@ -39,13 +39,68 @@ function createSequence(num) {
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(array, multiplier) {
+  const arrayMultipled = [];
+
+  array.forEach((num) => {
+    const calculatedNum = num * multiplier;
+    arrayMultipled.push(calculatedNum);
+  });
+  return arrayMultipled;
+}
 
 // Iteration 4 | Filter Out
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+// function filterOut(original, toRemove) {
+//   let finalArray = [];
+//   if (original.length === 0) {
+//     return null;
+//   } else if (toRemove.length === 0) {
+//     return original;
+//   } else {
+//     for (let i = 0; i < original.length; i++) {
+//       let originalWord = original[i];
+//       for (let j = 0; j < toRemove.length; j++) {
+//         let toRemoveWord = toRemove[j];
+//         if (originalWord === toRemoveWord) {
+//           original.splice(i, 1);
+//           toRemove.splice(j, 1);
+//         } else if (originalWord !== toRemoveWord) {
+//           finalArray.push(originalWord);
+//         }
+//       }
+//     }
+//     return finalArray;
+//   }
+// }
+
+function filterOut(original, toRemove) {
+  const finalArray = [];
+
+  if (original.length === 0) {
+    return null;
+  } else {
+    original.forEach((element) => {
+      finalArray.push(element);
+    });
+
+    console.log("Final Array", finalArray);
+
+    toRemove.forEach((element) => {
+      for (let i = finalArray.length; i >= 0; i--) {
+        const word = finalArray[i];
+        if (element === word) {
+          finalArray.splice(i, 1);
+          console.log(i, finalArray);
+        }
+      }
+    });
+  }
+  console.log(finalArray);
+  return finalArray;
+}
 
 // Iteration 5 | Unique Arrays
 const duplicateWords = [
@@ -62,7 +117,36 @@ const duplicateWords = [
   "bring",
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(originalArr) {
+  let newArray = [];
+  if (originalArr.length === 0) {
+    return null;
+  } else {
+    originalArr.forEach((element) => {
+      const testWord = newArray.includes(element);
+      if (!testWord) {
+        newArray.push(element);
+      }
+    });
+  }
+  return newArray;
+}
+
+// function uniquifyArray(wordsArray) {
+//   if (wordsArray.length === 0) {
+//     return null; //
+//   }
+
+//   let uniqueArray = [];
+
+//   wordsArray.forEach(function (word) {
+//     if (uniqueArray.indexOf(word) === -1) {
+//       uniqueArray.push(word);
+//     }
+//   });
+
+//   return uniqueArray;
+// }
 
 // Bonus: Iteration 6 | Product of Adjacent Numbers
 const matrix = [
